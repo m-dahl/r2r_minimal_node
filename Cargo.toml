@@ -1,0 +1,12 @@
+[package]
+name = "r2r_minimal_node"
+version = "0.1.0"
+authors = ["Martin Dahl <martin.dahl@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+r2r = { git = "https://github.com/sequenceplanner/r2r" }
+failure = "0.1.5"
+serde_json = "1.0"
