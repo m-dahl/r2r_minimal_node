@@ -8,21 +8,22 @@ function(ros_deps)
     find_package(${f} REQUIRED)
     list(APPEND AMENT_HACK_PATH "${${f}_DIR}/../../../")
   endforeach()
+  # potential platform issue below
   string (REPLACE ";" ":" AMENT_HACK_PATH_STR "${AMENT_HACK_PATH}")
   set(ENV{AMENT_HACK_PATH} ${AMENT_HACK_PATH_STR})
 endfunction()
 
 # put ros package dependencies here.
-ros_deps(geometry_msgs
-         sp_operator_msgs
-         rclcpp
+ros_deps(std_msgs
+         rcl
         )
 
 # this works fine except that it will be called both on make all and again on make install...
 add_custom_target(dummy_target ALL
-    COMMAND "env" "AMENT_PREFIX_PATH=$ENV{AMENT_HACK_PATH}" "cargo" "build" "--release"
+    COMMAND "cmake" "-E" "env" "AMENT_PREFIX_PATH=$ENV{AMENT_HACK_PATH}" "cargo" "build" "--release"
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     )
+
 
 install(PROGRAMS
   ${CMAKE_SOURCE_DIR}/target/release/${PROJECT_NAME}
