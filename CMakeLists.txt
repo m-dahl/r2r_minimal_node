@@ -19,11 +19,20 @@ ros_deps(std_msgs
         )
 
 # this works fine except that it will be called both on make all and again on make install...
-add_custom_target(dummy_target ALL
-    COMMAND "cmake" "-E" "env" "AMENT_PREFIX_PATH=$ENV{AMENT_HACK_PATH}" "cargo" "build" "--release"
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    )
-
+option(CARGO_CLEAN "Invoke cargo clean before building" OFF)
+if(CARGO_CLEAN)
+      add_custom_target(dummy_target ALL
+            COMMAND "cmake" "-E" "env" "cargo" "clean"
+            COMMAND "cmake" "-E" "env" "AMENT_PREFIX_PATH=$ENV{AMENT_HACK_PATH}" "cargo" "build" "--release"
+            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+            )
+else()
+        add_custom_target(dummy_target ALL
+            COMMAND "cmake" "-E" "env" "AMENT_PREFIX_PATH=$ENV{AMENT_HACK_PATH}" "cargo" "build" "--release"
+            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+            )
+endif(CARGO_CLEAN)
+unset(CARGO_CLEAN CACHE)
 
 install(PROGRAMS
   ${CMAKE_SOURCE_DIR}/target/release/${PROJECT_NAME}
