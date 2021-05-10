@@ -1,5 +1,5 @@
-# the recursive dependencies already defined don't seem to include all
-# packages. sigh.  so here we traverse the dependencies manually
+# the "recursive" dependencies already defined don't seem to include all
+# packages. sigh. so here we traverse the dependencies manually
 # instead. we also keep track of which packages that contain idl files.
 function(get_idl_deps OUT_INC OUT_LIB OUT_PKGS PKG)
     find_package(${PKG} REQUIRED)
@@ -7,6 +7,7 @@ function(get_idl_deps OUT_INC OUT_LIB OUT_PKGS PKG)
 
     set(INCS "${${PKG}_INCLUDE_DIRS}")
     set(LIBS "${${PKG}_LIBRARIES}")
+
     set(PKGS "")
     list(APPEND PKGS ${PKG})
     if(DEFINED ${PKG}_IDL_FILES)
@@ -45,6 +46,21 @@ function(r2r_cargo)
   string (REPLACE ";" ":" CMAKE_INCLUDE_DIRS_STR "${CMAKE_INCLUDE_DIRS}")
   set(ENV{CMAKE_INCLUDE_DIRS} ${CMAKE_INCLUDE_DIRS_STR})
   list(REMOVE_DUPLICATES CMAKE_LIBRARIES)
+
+  # On OSX  colcon eats the DYLD_LIBRARY_PATH... so we need to add the rpaths
+  # manually...
+  set(RUSTFLAGS "")
+  foreach(p ${CMAKE_LIBRARIES})
+    get_filename_component(_parent "${p}" DIRECTORY)
+    if(IS_DIRECTORY ${_parent})
+        list(APPEND RUSTFLAGS "-C link-arg=-Wl,-rpath,${_parent}")
+    endif()
+  endforeach()
+  list(REMOVE_DUPLICATES RUSTFLAGS)
+
+  string (REPLACE ";" " " RUSTFLAGS_STR "${RUSTFLAGS}")
+  set(ENV{RUSTFLAGS} ${RUSTFLAGS_STR})
+
   string (REPLACE ":" "+" CMAKE_LIBRARIES_STR "${CMAKE_LIBRARIES}")
   string (REPLACE ";" ":" CMAKE_LIBRARIES_STR "${CMAKE_LIBRARIES_STR}")
   set(ENV{CMAKE_LIBRARIES} "${CMAKE_LIBRARIES_STR}")
@@ -57,12 +73,12 @@ function(r2r_cargo)
   if(CARGO_CLEAN)
         add_custom_target(dummy_target ALL
               COMMAND "cmake" "-E" "env" "cargo" "clean"
-              COMMAND "cmake" "-E" "env" "CMAKE_INCLUDE_DIRS=$ENV{CMAKE_INCLUDE_DIRS}" "CMAKE_LIBRARIES=$ENV{CMAKE_LIBRARIES}" "CMAKE_IDL_PACKAGES=$ENV{CMAKE_IDL_PACKAGES}" "cargo" "build" "--release"
+              COMMAND "cmake" "-E" "env" "RUSTFLAGS=$ENV{RUSTFLAGS}" "CMAKE_INCLUDE_DIRS=$ENV{CMAKE_INCLUDE_DIRS}" "CMAKE_LIBRARIES=$ENV{CMAKE_LIBRARIES}" "CMAKE_IDL_PACKAGES=$ENV{CMAKE_IDL_PACKAGES}" "cargo" "build" "--release"
               WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
               )
   else()
           add_custom_target(dummy_target ALL
-              COMMAND "cmake" "-E" "env" "CMAKE_INCLUDE_DIRS=$ENV{CMAKE_INCLUDE_DIRS}" "CMAKE_LIBRARIES=$ENV{CMAKE_LIBRARIES}" "CMAKE_IDL_PACKAGES=$ENV{CMAKE_IDL_PACKAGES}" "cargo" "build" "--release"
+              COMMAND "cmake" "-E" "env" "RUSTFLAGS=$ENV{RUSTFLAGS}" "CMAKE_INCLUDE_DIRS=$ENV{CMAKE_INCLUDE_DIRS}" "CMAKE_LIBRARIES=$ENV{CMAKE_LIBRARIES}" "CMAKE_IDL_PACKAGES=$ENV{CMAKE_IDL_PACKAGES}" "cargo" "build" "--release"
              WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
               )
   endif(CARGO_CLEAN)

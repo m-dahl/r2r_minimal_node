@@ -144,7 +144,7 @@ dependencies = [
 [[package]]
 name = "common"
 version = "0.0.3"
-source = "git+https://github.com/sequenceplanner/r2r?rev=f46e119#f46e119b2e4753ebc01c98a232fd6ff70cb08cbb"
+source = "git+https://github.com/sequenceplanner/r2r#5427f318f476dd39950e83dd16146064835a4f00"
 
 [[package]]
 name = "either"
@@ -294,7 +294,7 @@ dependencies = [
 [[package]]
 name = "msg_gen"
 version = "0.0.3"
-source = "git+https://github.com/sequenceplanner/r2r?rev=f46e119#f46e119b2e4753ebc01c98a232fd6ff70cb08cbb"
+source = "git+https://github.com/sequenceplanner/r2r#5427f318f476dd39950e83dd16146064835a4f00"
 dependencies = [
  "bindgen",
  "common",
@@ -352,7 +352,7 @@ dependencies = [
 [[package]]
 name = "r2r"
 version = "0.0.6"
-source = "git+https://github.com/sequenceplanner/r2r?rev=f46e119#f46e119b2e4753ebc01c98a232fd6ff70cb08cbb"
+source = "git+https://github.com/sequenceplanner/r2r#5427f318f476dd39950e83dd16146064835a4f00"
 dependencies = [
  "common",
  "failure",
@@ -376,7 +376,7 @@ dependencies = [
 [[package]]
 name = "rcl"
 version = "0.0.3"
-source = "git+https://github.com/sequenceplanner/r2r?rev=f46e119#f46e119b2e4753ebc01c98a232fd6ff70cb08cbb"
+source = "git+https://github.com/sequenceplanner/r2r#5427f318f476dd39950e83dd16146064835a4f00"
 dependencies = [
  "bindgen",
  "common",
