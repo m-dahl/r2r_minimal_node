@@ -1,0 +1,8 @@
+# Goal
+string to_say
+---
+# Result
+bool ok
+---
+# Feedback
+int32 said_so_far

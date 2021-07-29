@@ -5,6 +5,4 @@ authors = ["Martin Dahl <martin.dahl@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-r2r = { git = "https://github.com/sequenceplanner/r2r", version = "0.0.6" }
-failure = "0.1.5"
-serde_json = "1.0"
+r2r = { git = "https://github.com/sequenceplanner/r2r", version = "0.1.0" }
