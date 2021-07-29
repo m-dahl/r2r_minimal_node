@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
 project(r2r_minimal_node)
+
+find_package(ament_cmake REQUIRED)
+
 include(r2r_cargo.cmake)
 
 # put ros package dependencies here.
@@ -9,12 +12,11 @@ r2r_cargo(std_msgs               # just to test that it works
           r2r_minimal_node_msgs  # our custom message types
          )
 
-# install your binaries
+# install binaries
 install(PROGRAMS
   ${CMAKE_SOURCE_DIR}/target/release/${PROJECT_NAME}
   DESTINATION lib/${PROJECT_NAME}
 )
 
-# we need this for ros
-find_package(ament_cmake REQUIRED)
+# we need this for ros/colcon
 ament_package()

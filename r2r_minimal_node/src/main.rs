@@ -30,7 +30,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Run our custom service
     node.create_service::<HelloWorld::Service>("/hello_world", Box::new(handle_service))?;
 
-    // create custom msg and action messages just to test
+    // create custom msg and action messages just to test that they are built
     let hello_msg = r2r::r2r_minimal_node_msgs::msg::Hello::default();
     assert_eq!(hello_msg.hello, String::new());
 

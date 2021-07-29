@@ -68,17 +68,17 @@ function(r2r_cargo)
   string (REPLACE ";" ":" CMAKE_IDL_PACKAGES_STR "${CMAKE_IDL_PACKAGES}")
   set(ENV{CMAKE_IDL_PACKAGES} ${CMAKE_IDL_PACKAGES_STR})
 
-  # this works fine except that it will be called both on make all and again on make install...
+  # custom target for building using cargo
   option(CARGO_CLEAN "Invoke cargo clean before building" OFF)
   if(CARGO_CLEAN)
-        add_custom_target(dummy_target ALL
-              COMMAND "cmake" "-E" "env" "cargo" "clean"
-              COMMAND "cmake" "-E" "env" "RUSTFLAGS=$ENV{RUSTFLAGS}" "CMAKE_INCLUDE_DIRS=$ENV{CMAKE_INCLUDE_DIRS}" "CMAKE_LIBRARIES=$ENV{CMAKE_LIBRARIES}" "CMAKE_IDL_PACKAGES=$ENV{CMAKE_IDL_PACKAGES}" "cargo" "build" "--release"
+        add_custom_target(cargo_target ALL
+              COMMAND ${CMAKE_COMMAND} "-E" "env" "cargo" "clean"
+              COMMAND ${CMAKE_COMMAND} "-E" "env" "RUSTFLAGS=$ENV{RUSTFLAGS}" "CMAKE_INCLUDE_DIRS=$ENV{CMAKE_INCLUDE_DIRS}" "CMAKE_LIBRARIES=$ENV{CMAKE_LIBRARIES}" "CMAKE_IDL_PACKAGES=$ENV{CMAKE_IDL_PACKAGES}" "cargo" "build" "--release"
               WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
               )
   else()
-          add_custom_target(dummy_target ALL
-              COMMAND "cmake" "-E" "env" "RUSTFLAGS=$ENV{RUSTFLAGS}" "CMAKE_INCLUDE_DIRS=$ENV{CMAKE_INCLUDE_DIRS}" "CMAKE_LIBRARIES=$ENV{CMAKE_LIBRARIES}" "CMAKE_IDL_PACKAGES=$ENV{CMAKE_IDL_PACKAGES}" "cargo" "build" "--release"
+          add_custom_target(cargo_target ALL
+              COMMAND ${CMAKE_COMMAND} "-E" "env" "RUSTFLAGS=$ENV{RUSTFLAGS}" "CMAKE_INCLUDE_DIRS=$ENV{CMAKE_INCLUDE_DIRS}" "CMAKE_LIBRARIES=$ENV{CMAKE_LIBRARIES}" "CMAKE_IDL_PACKAGES=$ENV{CMAKE_IDL_PACKAGES}" "cargo" "build" "--release"
              WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
               )
   endif(CARGO_CLEAN)
