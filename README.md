@@ -11,7 +11,7 @@ git clone [this repo]
 cd ..
 colcon build
 . install/setup.sh
-ros2 run r2r_minimal_node r2r_minimal_node --ros-args -p param1:=[str1,str2] -p param2:=5.5 param3=true -r __ns:=/demo -r __node:=my_node
+ros2 run r2r_minimal_node r2r_minimal_node --ros-args -p param1:="a string" -p param2:=5.5 -p param3:=true -r __ns:=/demo -r __node:=my_node
 [ctrl-z]
 bg
 ros2 service call /hello_world r2r_minimal_node_msgs/srv/HelloWorld '{ hello: "Hello" }'
@@ -36,7 +36,7 @@ cd ..
 colcon build --packages-select r2r_minimal_node_msgs # note that we only build the messages here
 . install/setup.sh
 cd src/r2r_minimal_node/r2r_minimal_node
-cargo run -- --ros-args -p param1:=[str1,str2]
+cargo run -- --ros-args  -p param1:="a string" -p param2:=5.5 -p param3:=true
 [ctrl-z]
 bg
 ros2 service call /hello_world r2r_minimal_node_msgs/srv/HelloWorld '{ hello: "Hello" }'
