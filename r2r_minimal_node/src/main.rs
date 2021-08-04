@@ -1,18 +1,9 @@
 use r2r;
 use r2r::r2r_minimal_node_msgs::srv::HelloWorld;
+use futures::{StreamExt, future};
 
-fn handle_service(request: HelloWorld::Request) -> HelloWorld::Response {
-    println!("request: {}", request.hello);
-    HelloWorld::Response {
-        world: if request.hello == "Hello" {
-            "World!".into()
-        } else {
-            "Hello Rust".into()
-        }
-    }
-}
-
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let ctx = r2r::Context::create()?;
     let mut node = r2r::Node::create(ctx, "testnode", "")?;
 
@@ -27,8 +18,23 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         println!("{} - {:?}", k, v);
     });
 
-    // Run our custom service
-    node.create_service::<HelloWorld::Service>("/hello_world", Box::new(handle_service))?;
+    // Run our custom service in a tokio task
+    let service = node.create_service::<HelloWorld::Service>("/hello_world")?;
+    tokio::task::spawn(async move {
+        service.for_each(|req| {
+            println!("request: {}", req.message.hello);
+            let resp = HelloWorld::Response {
+                world: if req.message.hello == "Hello" {
+                    "World!".into()
+                } else {
+                    "Hello Rust".into()
+                }
+            };
+            req.respond(resp);
+            future::ready(())
+        })
+        .await
+    });
 
     // create custom msg and action messages just to test that they are built
     let hello_msg = r2r::r2r_minimal_node_msgs::msg::Hello::default();
