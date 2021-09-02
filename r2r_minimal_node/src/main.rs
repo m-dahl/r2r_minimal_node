@@ -14,7 +14,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("msg: {:?}", msg);
 
     println!("node parameters");
-    node.params.iter().for_each(|(k,v)| {
+    node.params.lock().unwrap().iter().for_each(|(k,v)| {
         println!("{} - {:?}", k, v);
     });
 
@@ -30,7 +30,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                     "Hello Rust".into()
                 }
             };
-            req.respond(resp);
+            req.respond(resp).expect("could not send response");
             future::ready(())
         })
         .await

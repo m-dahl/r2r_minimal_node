@@ -5,6 +5,6 @@ authors = ["Martin Dahl <martin.dahl@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-r2r = { git = "https://github.com/sequenceplanner/r2r", version = "0.2.0" }
+r2r = "0.5.2"
 futures = "0.3.15"
 tokio = { version = "1", features = ["full"] }
