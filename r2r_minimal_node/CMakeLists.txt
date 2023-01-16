@@ -14,13 +14,11 @@ r2r_cargo(std_msgs               # just to test that it works
           rcl                    # we need the c ros2 api
           rcl_action             # as of r2r 0.1.0, we also need the action api
           r2r_minimal_node_msgs  # our custom message types
-          rmw_fastrtps_cpp       # (needed to build with RMW_IMPLEMENTATION=rmw_fastrtps_cpp)
-          FastRTPS               # (needed to build with RMW_IMPLEMENTATION=rmw_fastrtps_cpp)
          )
 
 # install binaries
 install(PROGRAMS
-  ${CMAKE_SOURCE_DIR}/target/release/${PROJECT_NAME}
+  ${CMAKE_SOURCE_DIR}/target/colcon/${PROJECT_NAME}
   DESTINATION lib/${PROJECT_NAME}
 )
 

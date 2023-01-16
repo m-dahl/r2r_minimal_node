@@ -24,9 +24,13 @@ cargo clean can be invoked by passing `-DCARGO_CLEAN=ON` to cmake, eg.
 colcon build --cmake-args -DCARGO_CLEAN=ON
 ```
 
+To keep builds performed by colcon separate, `r2r_cargo` *expects a custom profile called `colcon` to exist*. See <https://github.com/m-dahl/r2r_minimal_node/blob/master/r2r_minimal_node/Cargo.toml> for an example.
+
 ## Building using only cargo
 
 Another option is to build the message package first, then sourcing the resulting workspace. When `r2r_minimal_node_msgs` is sourced, the r2r build script will automatically pick up the custom messages (it defaults to building everything).
+
+To avoid building everything, it is possible to declare only the messages needed using the environment variable `IDL_PACKAGE_FILTER`. Setting this can be done in `.cargo/config.toml` for convenience, e.g. <https://github.com/m-dahl/r2r_minimal_node/blob/master/r2r_minimal_node/.cargo/config.toml>
 
 ``` sh
 mkdir src
