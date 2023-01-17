@@ -10,6 +10,6 @@ edition = "2021"
 inherits = "release"
 
 [dependencies]
-r2r = "0.6.4"
+r2r = "0.6.5"
 futures = "0.3.15"
 tokio = { version = "1", features = ["full"] }
