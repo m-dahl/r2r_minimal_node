@@ -422,9 +422,9 @@ dependencies = [
 
 [[package]]
 name = "r2r"
-version = "0.6.5"
+version = "0.6.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "14eae673432c991810e3159cf43e925431fca07fa80eb0edc07118e41bfe3527"
+checksum = "49f613e5262c1a4faeab3a9cc39b8a0f8de3fedf0160339bdb79eaffaf60f0a8"
 dependencies = [
  "futures",
  "lazy_static",
@@ -440,9 +440,9 @@ dependencies = [
 
 [[package]]
 name = "r2r_actions"
-version = "0.3.4"
+version = "0.3.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "92ca396bcf2d078ac4277abe9158091e5ad87a741b03c7483568f7a91cbbd89a"
+checksum = "548d061834f5f6ef920b5805bb1c54e129df4acf05246fcaaf6fddb2a483323c"
 dependencies = [
  "bindgen",
  "r2r_common",
@@ -452,9 +452,9 @@ dependencies = [
 
 [[package]]
 name = "r2r_common"
-version = "0.3.3"
+version = "0.3.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "aef28048b8e0abd1305b7978f719fe9b6c2242305ef24182d826db27ff2abe11"
+checksum = "fb0e8f5f3273ff913b0c815a9bed120ee06e4d9330e525baeb5081ed3a14e45d"
 dependencies = [
  "bindgen",
  "itertools",
@@ -472,9 +472,9 @@ dependencies = [
 
 [[package]]
 name = "r2r_msg_gen"
-version = "0.3.5"
+version = "0.3.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c84b5a9d27f0fdaeb11855a46c8667ee641d625fcd659b9ad178e8fe4eb76227"
+checksum = "d44a94c7eb7a4d5a4acc5cd551065332000005cbe10a71f8c7458a6f2c5c0174"
 dependencies = [
  "bindgen",
  "heck",
@@ -485,9 +485,9 @@ dependencies = [
 
 [[package]]
 name = "r2r_rcl"
-version = "0.3.3"
+version = "0.3.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "148da1f31895978216a679b39b23448dd9e0b9fc50da138968cb36959e6b6219"
+checksum = "d7d91fdec666fc877b5ce55f7b28a41cd59e7cc6615eba9096ada14dd6aed2a3"
 dependencies = [
  "bindgen",
  "paste",

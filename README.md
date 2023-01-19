@@ -17,14 +17,12 @@ bg
 ros2 service call /hello_world r2r_minimal_node_msgs/srv/HelloWorld '{ hello: "Hello" }'
 ```
 
-The integration with colcon is just a cmake hack that calls cargo, see CMakeLists.txt. Note the `r2r_cargo` function call.
+The integration with colcon is just a cmake hack that calls cargo, see CMakeLists.txt. Note the `r2r_cargo` function call. **Note that an empty `dummy.c`** is required in the crate root. To keep builds performed by colcon separate, `r2r_cargo` **expects a custom profile called `colcon` to exist**. See <https://github.com/m-dahl/r2r_minimal_node/blob/master/r2r_minimal_node/Cargo.toml> for an example.
 
 cargo clean can be invoked by passing `-DCARGO_CLEAN=ON` to cmake, eg.
 ```
 colcon build --cmake-args -DCARGO_CLEAN=ON
 ```
-
-To keep builds performed by colcon separate, `r2r_cargo` *expects a custom profile called `colcon` to exist*. See <https://github.com/m-dahl/r2r_minimal_node/blob/master/r2r_minimal_node/Cargo.toml> for an example.
 
 ## Building using only cargo
 
