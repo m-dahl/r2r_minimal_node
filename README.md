@@ -24,6 +24,11 @@ cargo clean can be invoked by passing `-DCARGO_CLEAN=ON` to cmake, eg.
 colcon build --cmake-args -DCARGO_CLEAN=ON
 ```
 
+### Note on cmake and Ubuntu 20.04
+The `r2r_cargo` function requires cmake version 3.21 or newer, but
+ubuntu 20.04 ships with cmake 3.16.3. You can update to a newer cmake
+version by adding the kitware apt repo: <https://apt.kitware.com>.
+
 ## Building using only cargo
 
 Another option is to build the message package first, then sourcing the resulting workspace. When `r2r_minimal_node_msgs` is sourced, the r2r build script will automatically pick up the custom messages (it defaults to building everything).
