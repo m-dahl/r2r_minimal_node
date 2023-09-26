@@ -17,8 +17,14 @@ r2r_cargo(std_msgs               # just to test that it works
          )
 
 # install binaries
+if(WIN32)
+  set(SUFFIX ".exe")
+else()
+  set(SUFFIX "")
+endif()
+
 install(PROGRAMS
-  ${CMAKE_SOURCE_DIR}/target/colcon/${PROJECT_NAME}
+  ${CMAKE_SOURCE_DIR}/target/colcon/${PROJECT_NAME}${SUFFIX}
   DESTINATION lib/${PROJECT_NAME}
 )
 
