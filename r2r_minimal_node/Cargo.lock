@@ -201,9 +201,9 @@ checksum = "a26ae43d7bcc3b814de94796a5e736d4029efb0ee900c12e2d54c993ad1a1e07"
 
 [[package]]
 name = "errno"
-version = "0.3.3"
+version = "0.3.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "136526188508e25c6fef639d7927dfb3e0e3084488bf202267829cf7fc23dbdd"
+checksum = "add4f07d43996f76ef320709726a556a9d4f965d9410d8d0271132d2f8293480"
 dependencies = [
  "errno-dragonfly",
  "libc",
@@ -408,9 +408,9 @@ dependencies = [
 
 [[package]]
 name = "linux-raw-sys"
-version = "0.4.7"
+version = "0.4.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1a9bad9f94746442c783ca431b22403b519cd7fbeed0533fdd6328b2f2212128"
+checksum = "3852614a3bd9ca9804678ba6be5e3b8ce76dfc902cae004e3e0c44051b6e88db"
 
 [[package]]
 name = "lock_api"
@@ -430,9 +430,9 @@ checksum = "b5e6163cb8c49088c2c36f57875e58ccd8c87c7427f7fbd50ea6710b2f3f2e8f"
 
 [[package]]
 name = "memchr"
-version = "2.6.3"
+version = "2.6.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8f232d6ef707e1956a43342693d2a31e72989554d58299d7a88738cc95b0d35c"
+checksum = "f665ee40bc4a3c5590afb1e9677db74a508659dfd71e126420da8274909a0167"
 
 [[package]]
 name = "memoffset"
@@ -632,8 +632,9 @@ dependencies = [
 
 [[package]]
 name = "r2r"
-version = "0.7.5"
-source = "git+https://github.com/sequenceplanner/r2r#0a6e0f571a9802255b9d5099762bc4abe3f1beec"
+version = "0.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0851af9901335f7b0304fc76b66d5e615c17ebeeb9b4e91b26c6dc407cf2828f"
 dependencies = [
  "force-send-sync",
  "futures",
@@ -645,6 +646,7 @@ dependencies = [
  "quote",
  "r2r_actions",
  "r2r_common",
+ "r2r_macros",
  "r2r_msg_gen",
  "r2r_rcl",
  "rayon",
@@ -657,8 +659,9 @@ dependencies = [
 
 [[package]]
 name = "r2r_actions"
-version = "0.3.12"
-source = "git+https://github.com/sequenceplanner/r2r#0a6e0f571a9802255b9d5099762bc4abe3f1beec"
+version = "0.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d44dd27c343a95d809c4f5a5ff0ead9fc72bba7df43d2e71e830b4682cadc7d8"
 dependencies = [
  "bindgen",
  "r2r_common",
@@ -668,14 +671,25 @@ dependencies = [
 
 [[package]]
 name = "r2r_common"
-version = "0.3.8"
-source = "git+https://github.com/sequenceplanner/r2r#0a6e0f571a9802255b9d5099762bc4abe3f1beec"
+version = "0.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d8ef5ba737c4f02382ecb0dba2518fadb707083462eb3d7377fad663fa1f1a7b"
 dependencies = [
  "bindgen",
- "itertools",
  "os_str_bytes",
  "regex",
  "sha2",
+]
+
+[[package]]
+name = "r2r_macros"
+version = "0.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "17f2f4c84d30dbc0f64bc3a1b77461a7a266df4d64419249de3b0cdc4c0e110b"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 2.0.37",
 ]
 
 [[package]]
@@ -689,8 +703,9 @@ dependencies = [
 
 [[package]]
 name = "r2r_msg_gen"
-version = "0.3.13"
-source = "git+https://github.com/sequenceplanner/r2r#0a6e0f571a9802255b9d5099762bc4abe3f1beec"
+version = "0.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4bbea3564ab308b5e47b93e0ba0f3077dda9b085c2e20ea3486b96cc28f18304"
 dependencies = [
  "bindgen",
  "force-send-sync",
@@ -706,8 +721,9 @@ dependencies = [
 
 [[package]]
 name = "r2r_rcl"
-version = "0.3.9"
-source = "git+https://github.com/sequenceplanner/r2r#0a6e0f571a9802255b9d5099762bc4abe3f1beec"
+version = "0.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c2db6eca38530edd4cccc2c7ae204dc30136aac9cdc317f211df0211e6545e31"
 dependencies = [
  "bindgen",
  "paste",
@@ -761,9 +777,9 @@ dependencies = [
 
 [[package]]
 name = "regex"
-version = "1.9.5"
+version = "1.9.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "697061221ea1b4a94a624f67d0ae2bfe4e22b8a17b6a192afb11046542cc8c47"
+checksum = "ebee201405406dbf528b8b672104ae6d6d63e6d118cb10e4d51abbc7b58044ff"
 dependencies = [
  "aho-corasick",
  "memchr",
@@ -773,9 +789,9 @@ dependencies = [
 
 [[package]]
 name = "regex-automata"
-version = "0.3.8"
+version = "0.3.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c2f401f4955220693b56f8ec66ee9c78abffd8d1c4f23dc41a23839eb88f0795"
+checksum = "59b23e92ee4318893fa3fe3e6fb365258efbfe6ac6ab30f090cdcbb7aa37efa9"
 dependencies = [
  "aho-corasick",
  "memchr",
@@ -802,9 +818,9 @@ checksum = "08d43f7aa6b08d49f382cde6a7982047c3426db949b1424bc4b7ec9ae12c6ce2"
 
 [[package]]
 name = "rustix"
-version = "0.38.14"
+version = "0.38.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "747c788e9ce8e92b12cd485c49ddf90723550b654b32508f979b71a7b1ecda4f"
+checksum = "f25469e9ae0f3d0047ca8b93fc56843f38e6774f0914a107ff8b41be8be8e0b7"
 dependencies = [
  "bitflags 2.4.0",
  "errno",
@@ -937,18 +953,18 @@ dependencies = [
 
 [[package]]
 name = "thiserror"
-version = "1.0.48"
+version = "1.0.49"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9d6d7a740b8a666a7e828dd00da9c0dc290dff53154ea77ac109281de90589b7"
+checksum = "1177e8c6d7ede7afde3585fd2513e611227efd6481bd78d2e82ba1ce16557ed4"
 dependencies = [
  "thiserror-impl",
 ]
 
 [[package]]
 name = "thiserror-impl"
-version = "1.0.48"
+version = "1.0.49"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "49922ecae66cc8a249b77e68d1d0623c1b2c514f0060c27cdc68bd62a1219d35"
+checksum = "10712f02019e9288794769fba95cd6847df9874d49d871d062172f9dd41bc4cc"
 dependencies = [
  "proc-macro2",
  "quote",

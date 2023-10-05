@@ -10,6 +10,6 @@ edition = "2021"
 inherits = "release"
 
 [dependencies]
-r2r = { git = "https://github.com/sequenceplanner/r2r" }
+r2r = "0.8.0"
 futures = "0.3.15"
 tokio = { version = "1", features = ["full"] }

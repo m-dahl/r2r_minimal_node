@@ -15,7 +15,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     println!("node parameters");
     node.params.lock().unwrap().iter().for_each(|(k,v)| {
-        println!("{} - {:?}", k, v);
+        println!("{} - {:?}", k, v.value);
     });
 
     // Run our custom service in a tokio task
