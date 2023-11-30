@@ -632,9 +632,9 @@ dependencies = [
 
 [[package]]
 name = "r2r"
-version = "0.8.0"
+version = "0.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0851af9901335f7b0304fc76b66d5e615c17ebeeb9b4e91b26c6dc407cf2828f"
+checksum = "bafe8457ec45ef942a408c61a508d439282512f36c21cf8b490cd79cfbd724ea"
 dependencies = [
  "force-send-sync",
  "futures",
@@ -659,9 +659,9 @@ dependencies = [
 
 [[package]]
 name = "r2r_actions"
-version = "0.8.0"
+version = "0.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d44dd27c343a95d809c4f5a5ff0ead9fc72bba7df43d2e71e830b4682cadc7d8"
+checksum = "4046f13a12b83f6d6907430821fe142f17ff9e11d340110dca6df2fc8ff2fd99"
 dependencies = [
  "bindgen",
  "r2r_common",
@@ -671,9 +671,9 @@ dependencies = [
 
 [[package]]
 name = "r2r_common"
-version = "0.8.0"
+version = "0.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d8ef5ba737c4f02382ecb0dba2518fadb707083462eb3d7377fad663fa1f1a7b"
+checksum = "cc17b34d5432ffd960460125689bc5e1cf4d0b2994a8a5ec4b01a181635ccc05"
 dependencies = [
  "bindgen",
  "os_str_bytes",
@@ -683,9 +683,9 @@ dependencies = [
 
 [[package]]
 name = "r2r_macros"
-version = "0.8.0"
+version = "0.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "17f2f4c84d30dbc0f64bc3a1b77461a7a266df4d64419249de3b0cdc4c0e110b"
+checksum = "b38371f13b6e447219650489e58d885512d93e6da393215899d646f801bb4bf4"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -703,9 +703,9 @@ dependencies = [
 
 [[package]]
 name = "r2r_msg_gen"
-version = "0.8.0"
+version = "0.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4bbea3564ab308b5e47b93e0ba0f3077dda9b085c2e20ea3486b96cc28f18304"
+checksum = "f6b4b260f1c37e430898800e21298a9ee5c08f00be0317cbbd46bec8728b65ad"
 dependencies = [
  "bindgen",
  "force-send-sync",
@@ -721,9 +721,9 @@ dependencies = [
 
 [[package]]
 name = "r2r_rcl"
-version = "0.8.0"
+version = "0.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c2db6eca38530edd4cccc2c7ae204dc30136aac9cdc317f211df0211e6545e31"
+checksum = "618d418f267816d06fcda56a19b27d8d490f33caa7d29cf08c591e84caccc4ae"
 dependencies = [
  "bindgen",
  "paste",
