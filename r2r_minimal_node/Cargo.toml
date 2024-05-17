@@ -10,6 +10,7 @@ edition = "2021"
 inherits = "release"
 
 [dependencies]
-r2r = "0.8.4"
+# Handle API change while we wait for r2r = "0.8.5" to be released.
+r2r = { git = "https://github.com/sequenceplanner/r2r" }
 futures = "0.3.15"
 tokio = { version = "1", features = ["full"] }

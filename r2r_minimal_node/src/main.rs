@@ -19,7 +19,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     });
 
     // Run our custom service in a tokio task
-    let service = node.create_service::<HelloWorld::Service>("/hello_world")?;
+    let service = node.create_service::<HelloWorld::Service>("/hello_world", r2r::QosProfile::default())?;
     tokio::task::spawn(async move {
         service.for_each(|req| {
             println!("request: {}", req.message.hello);
