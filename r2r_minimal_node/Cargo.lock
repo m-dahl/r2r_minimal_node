@@ -192,6 +192,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a26ae43d7bcc3b814de94796a5e736d4029efb0ee900c12e2d54c993ad1a1e07"
 
 [[package]]
+name = "equivalent"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5443807d6dff69373d433ab9ef5378ad8df50ca6298caf15de6e52e24aaf54d5"
+
+[[package]]
 name = "errno"
 version = "0.3.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -330,6 +336,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d2fabcfbdc87f4758337ca535fb41a6d701b65693ce38287d856d1674551ec9b"
 
 [[package]]
+name = "hashbrown"
+version = "0.14.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e5274423e17b7c9fc20b6e7e208532f9b19825d82dfd615708b70edd83df41f1"
+
+[[package]]
 name = "hermit-abi"
 version = "0.3.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -342,6 +354,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e3d1354bf6b7235cb4a0576c2619fd4ed18183f689b12b006a0ee7329eeff9a5"
 dependencies = [
  "windows-sys 0.52.0",
+]
+
+[[package]]
+name = "indexmap"
+version = "2.2.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "168fb715dda47215e360912c096649d23d58bf392ac62f73919e831745e40f26"
+dependencies = [
+ "equivalent",
+ "hashbrown",
 ]
 
 [[package]]
@@ -604,12 +626,13 @@ dependencies = [
 
 [[package]]
 name = "r2r"
-version = "0.8.4"
+version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ae1e4289daf2e18cb68bbeec3ea7c71a9bacd23794aeee6c9aa95c7b18cb0dc1"
+checksum = "d333c7056fd130eb66736f0d622011bd7734bd7b6cae216428f0da7bd30925a0"
 dependencies = [
  "force-send-sync",
  "futures",
+ "indexmap",
  "lazy_static",
  "log",
  "phf",
@@ -631,9 +654,9 @@ dependencies = [
 
 [[package]]
 name = "r2r_actions"
-version = "0.8.4"
+version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b659b32555f18cc92702e2eeb4e91579e4788842aace0de0cc35f0d1c84ed7d4"
+checksum = "0492637220592e316a0708212f0106827215e5768f563b4251993bcec96d40e2"
 dependencies = [
  "bindgen",
  "r2r_common",
@@ -643,9 +666,9 @@ dependencies = [
 
 [[package]]
 name = "r2r_common"
-version = "0.8.4"
+version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4d2d5516f98db41f1abfb3f3caa6d6d91d5e1f49303ddb26e67db344f957459b"
+checksum = "8bacedeb1c6c078a36d3df827fc2334e6cda1c37a6b1a6acd44476771898ebed"
 dependencies = [
  "bindgen",
  "os_str_bytes",
@@ -655,9 +678,9 @@ dependencies = [
 
 [[package]]
 name = "r2r_macros"
-version = "0.8.4"
+version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4ff387d2de1cbd1c8462670c3ccc401841982aecef0419237b47c3bac592403f"
+checksum = "7b87edf202755674fb9688a99cdd579547cd284e77150a7ed4467f2d255a8796"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -675,9 +698,9 @@ dependencies = [
 
 [[package]]
 name = "r2r_msg_gen"
-version = "0.8.4"
+version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "251a8d0faa8b10bb244cb98d0af22e27760e59de273d4c7828b94e8ef16d6536"
+checksum = "46c3711159dad6743b3688ab9d7f102097479289c494b52b45a582aa92bf5501"
 dependencies = [
  "bindgen",
  "force-send-sync",
@@ -693,9 +716,9 @@ dependencies = [
 
 [[package]]
 name = "r2r_rcl"
-version = "0.8.4"
+version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a773fd2ff11ebb9dcf1aaae083c7388f603d401fba0bb544a889a1a4ddbd858c"
+checksum = "a6daf71bab8daf11941083b14f404dcfdfb67b05a51ee32b32b9f50a30749f01"
 dependencies = [
  "bindgen",
  "paste",
