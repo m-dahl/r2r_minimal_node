@@ -4,25 +4,50 @@ This package shows how to use <https://github.com/sequenceplanner/r2r> to create
 
 ## Using colcon to build
 
-Install the Rust plugins for the ROS buildtools.
+``` sh
+mkdir src
+cd src
+git clone [this repo]
+cd ..
+colcon build
+. install/setup.sh
+ros2 run r2r_minimal_node r2r_minimal_node --ros-args -p param1:="a string" -p param2:=5.5 -p param3:=true -r __ns:=/demo -r __node:=my_node
+[ctrl-z]
+bg
+ros2 service call /hello_world r2r_minimal_node_msgs/srv/HelloWorld '{ hello: "Hello" }'
+```
 
+The integration with colcon is just a cmake hack that calls cargo, see CMakeLists.txt. Note the `r2r_cargo` function call. **Note that an empty `dummy.c`** is required in the crate root. To keep builds performed by colcon separate, `r2r_cargo` **expects a custom profile called `colcon` to exist**. See <https://github.com/m-dahl/r2r_minimal_node/blob/master/r2r_minimal_node/Cargo.toml> for an example.
+
+cargo clean can be invoked by passing `-DCARGO_CLEAN=ON` to cmake, eg.
+```
+colcon build --cmake-args -DCARGO_CLEAN=ON
+```
+
+### Note on cmake and Ubuntu 20.04
+The `r2r_cargo` function requires cmake version 3.21 or newer, but
+ubuntu 20.04 ships with cmake 3.16.3. You can update to a newer cmake
+version by adding the kitware apt repo: <https://apt.kitware.com>.
+
+## Building using the Rust plugins for the ROS buildtools.
+It is also possible to build using the Rust plugins for the ROS buildtools.
+
+To install the Rust plugins for the ROS buildtools:
 ```sh
 cargo install --debug cargo-ament-build
 pip install git+https://github.com/colcon/colcon-cargo.git
 pip install git+https://github.com/colcon/colcon-ros-cargo.git
 ```
 
+`r2r_minimal_node_colcon_plugin` is configured to be built using the rust plugins. To only build one version of the minimal node package, this directory has a `COLCON_IGNORE` file in it. Move it to `r2r_minimal_node` to skip that package instead.
+
 ```sh
 mkdir src
 cd src
 git clone [this repo]
+mv r2r_minimal_node_colcon_plugin/COLCON_IGNORE r2r_minimal_node/
 cd ..
 colcon build --clean-build --cargo-args --release
-. install/setup.sh
-ros2 run r2r_minimal_node r2r_minimal_node --ros-args -p param1:="a string" -p param2:=5.5 -p param3:=true -r __ns:=/demo -r __node:=my_node
-[ctrl-z]
-bg
-ros2 service call /hello_world r2r_minimal_node_msgs/srv/HelloWorld '{ hello: "Hello" }'
 ```
 
 ## Building using only cargo

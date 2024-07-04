@@ -4,11 +4,6 @@ version = "0.1.0"
 authors = ["Martin Dahl <martin.dahl@gmail.com>"]
 edition = "2021"
 
-# We use a custom profile to keep colcon
-# separate from "normal" rust building.
-[profile.colcon]
-inherits = "release"
-
 [dependencies]
 r2r = "0.9"
 futures = "0.3.15"
