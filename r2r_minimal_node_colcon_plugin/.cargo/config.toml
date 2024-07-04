@@ -1,0 +1,3 @@
+# Example of how to do idl package filtering.
+[env]
+IDL_PACKAGE_FILTER = { value = "std_msgs;r2r_minimal_node_msgs" }
