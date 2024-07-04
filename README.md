@@ -29,6 +29,27 @@ The `r2r_cargo` function requires cmake version 3.21 or newer, but
 ubuntu 20.04 ships with cmake 3.16.3. You can update to a newer cmake
 version by adding the kitware apt repo: <https://apt.kitware.com>.
 
+## Building using the Rust plugins for the ROS buildtools.
+It is also possible to build using the Rust plugins for the ROS buildtools.
+
+To install the Rust plugins for the ROS buildtools:
+```sh
+cargo install --debug cargo-ament-build
+pip install git+https://github.com/colcon/colcon-cargo.git
+pip install git+https://github.com/colcon/colcon-ros-cargo.git
+```
+
+`r2r_minimal_node_colcon_plugin` is configured to be built using the rust plugins. To only build one version of the minimal node package, this directory has a `COLCON_IGNORE` file in it. Move it to `r2r_minimal_node` to skip that package instead.
+
+```sh
+mkdir src
+cd src
+git clone [this repo]
+mv r2r_minimal_node_colcon_plugin/COLCON_IGNORE r2r_minimal_node/
+cd ..
+colcon build --clean-build --cargo-args --release
+```
+
 ## Building using only cargo
 
 Another option is to build the message package first, then sourcing the resulting workspace. When `r2r_minimal_node_msgs` is sourced, the r2r build script will automatically pick up the custom messages (it defaults to building everything).
