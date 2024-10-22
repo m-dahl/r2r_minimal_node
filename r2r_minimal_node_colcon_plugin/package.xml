@@ -15,4 +15,8 @@
   <exec_depend>rcl</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>r2r_minimal_node_msgs</exec_depend>
+
+  <export>
+    <build_type>ament_cargo</build_type>
+  </export>
 </package>

@@ -8,3 +8,7 @@ edition = "2021"
 r2r = "0.9"
 futures = "0.3.15"
 tokio = { version = "1", features = ["full"] }
+
+# Install launch files or configs to the share directory.
+#[package.metadata.ros]
+#install_to_share = ["launch"]

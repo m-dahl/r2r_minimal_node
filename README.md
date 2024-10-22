@@ -34,12 +34,10 @@ It is also possible to build using the Rust plugins for the ROS buildtools.
 
 To install the Rust plugins for the ROS buildtools:
 ```sh
-cargo install --debug cargo-ament-build
-pip install git+https://github.com/colcon/colcon-cargo.git
-pip install git+https://github.com/colcon/colcon-ros-cargo.git
+pip install --break-system-package colcon-ros-cargo cargo-ament-build
 ```
 
-`r2r_minimal_node_colcon_plugin` is configured to be built using the rust plugins. To only build one version of the minimal node package, this directory has a `COLCON_IGNORE` file in it. Move it to `r2r_minimal_node` to skip that package instead.
+`r2r_minimal_node_colcon_plugin` is configured to be built using the Rust plugins. To only build one version of the minimal node package, this directory has a `COLCON_IGNORE` file in it. Move it to `r2r_minimal_node` to skip that package instead.
 
 ```sh
 mkdir src
